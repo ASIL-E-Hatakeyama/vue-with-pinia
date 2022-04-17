@@ -16,9 +16,7 @@
 
 <script lang="ts" setup>
 import { computed, reactive } from "vue";
-import { useRouter } from "vue-router";
 import { useLoginInfoStore } from "../../settings/store";
-const router = useRouter();
 const loginInfoStore = useLoginInfoStore();
 
 // ログイン入力項目
@@ -32,6 +30,6 @@ const isDisabledLoginBtn = computed(
 );
 // ログインボタン押下
 const clickLoginBtn = () => {
-  loginInfoStore.login(inputForm.loginId, inputForm.password, router);
+  loginInfoStore.login(inputForm.loginId, inputForm.password);
 };
 </script>

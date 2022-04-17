@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Router } from "vue-router";
+import router from "./router";
 
 // interfaceで型をガチガチにしちゃえば、
 // 項目が増えた時とかにココを直した瞬間、
@@ -16,7 +16,7 @@ export const useLoginInfoStore = defineStore("loginInfoStore", {
   }),
   actions: {
     // ログイン処理
-    async login(loginId: string, password: string, router: Router) {
+    async login(loginId: string, password: string) {
       // 本来ならAPIとか呼んでチェックするけど、
       // API用意するのめんどいのでIDとPassが同じ時だけ通す
       if (loginId === password) {
