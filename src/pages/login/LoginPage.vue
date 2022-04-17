@@ -1,0 +1,37 @@
+<template>
+  <div>
+    <div>
+      <label for="loginId">ログインID</label>
+      <input type="text" id="loginId" v-model="inputForm.loginId" />
+    </div>
+    <div>
+      <label for="password">パスワード</label>
+      <input type="password" id="password" v-model="inputForm.password" />
+    </div>
+    <button type="button" @click="clickLoginBtn" :disabled="isDisabledLoginBtn">
+      ログイン
+    </button>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import { computed, reactive } from "vue";
+import { useRouter } from "vue-router";
+import { useLoginInfoStore } from "../../settings/store";
+const router = useRouter();
+const loginInfoStore = useLoginInfoStore();
+
+// ログイン入力項目
+const inputForm = reactive({
+  loginId: "",
+  password: "",
+});
+// ログインボタン押せるかフラグ
+const isDisabledLoginBtn = computed(
+  () => !inputForm.loginId || !inputForm.password
+);
+// ログインボタン押下
+const clickLoginBtn = () => {
+  loginInfoStore.login(inputForm.loginId, inputForm.password, router);
+};
+</script>
