@@ -15,9 +15,16 @@
 </template>
 
 <script lang="ts" setup>
-import { computed, reactive } from "vue";
+import { computed, onBeforeMount, reactive } from "vue";
 import { useLoginInfoStore } from "../../settings/store";
 const loginInfoStore = useLoginInfoStore();
+
+// マウント時にログアウトする
+// setup時でも良いかなと思ったけど
+// onMountedとかの書き方の備忘録も兼ねてこのタイミングで。。。
+onBeforeMount(() => {
+  loginInfoStore.logout();
+});
 
 // ログイン入力項目
 const inputForm = reactive({

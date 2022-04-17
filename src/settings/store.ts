@@ -27,6 +27,10 @@ export const useLoginInfoStore = defineStore("loginInfoStore", {
         alert("ログインID・パスワードが間違っています。");
       }
     },
+    // ログアウト
+    logout() {
+      this.$reset();
+    },
   },
 });
 
