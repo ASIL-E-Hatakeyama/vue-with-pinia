@@ -35,7 +35,6 @@ interface TodoInfo {
   isComplete: boolean;
   isDelete: boolean;
 }
-ｓ;
 export const useTodosStore = defineStore("todosStore", {
   state: () => ({
     todos: [] as TodoInfo[],
