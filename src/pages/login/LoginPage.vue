@@ -36,7 +36,6 @@ const isDisabledLoginBtn = computed(
   () => !inputForm.loginId || !inputForm.password
 );
 // ログインボタン押下
-const clickLoginBtn = () => {
+const clickLoginBtn = () =>
   loginInfoStore.login(inputForm.loginId, inputForm.password);
-};
 </script>
