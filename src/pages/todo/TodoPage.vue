@@ -1,7 +1,7 @@
 <template>
   <div>
     <label for="todoAction">TODO</label>
-    <input type="text" id="todoAction" v-model="todoAction" />
+    <input type="text" id="todoAction" v-model="todoAction" ref="todoText" />
     <button type="button" @click="clickAddBtn" :disabled="isDisabledAddBtn">
       追加
     </button>
@@ -18,6 +18,7 @@ import { useTodosStore } from "../../settings/store";
 const todosStore = useTodosStore();
 
 // TODO入力項目
+const todoText = ref();
 const todoAction = ref("");
 // 追加ボタン押せるかフラグ
 const isDisabledAddBtn = computed(() => !todoAction.value);
@@ -25,5 +26,6 @@ const isDisabledAddBtn = computed(() => !todoAction.value);
 const clickAddBtn = () => {
   todosStore.add(todoAction.value);
   todoAction.value = "";
+  todoText.value.focus();
 };
 </script>
